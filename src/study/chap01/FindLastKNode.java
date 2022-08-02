@@ -33,7 +33,7 @@ public class FindLastKNode {
         Iterator<Integer> iter = linkedList.iterator();
 
         while(iter.hasNext()) {
-            System.out.print(iter.next());
+            System.out.print(iter.next()) ;
             if(iter.hasNext()) {
                 System.out.print(" -> ");
             }
