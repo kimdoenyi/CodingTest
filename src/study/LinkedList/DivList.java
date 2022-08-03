@@ -1,8 +1,7 @@
-package study.chap01;
+package study.LinkedList;
 
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 /**
  * LinkedList 에 있는 노드들을 X 값을 기준으로 작은 수는 왼쪽 , 큰수는 오른쪽에 배열하기

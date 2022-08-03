@@ -1,4 +1,4 @@
-package study.chap01;
+package study.LinkedList;
 
 /**
  * 단방향 LinkedList 구현하기
