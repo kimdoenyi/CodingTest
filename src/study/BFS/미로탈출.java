@@ -38,7 +38,7 @@ public class 미로탈출 {
     public static int dy[] = {0, 0, -1, 1};
 
     public static int bfs(int x, int y) {
-        // Queeu 선언
+        // Queue 선언
         Queue<Node> q = new LinkedList<>();
         q.offer(new Node(x,y));
         
