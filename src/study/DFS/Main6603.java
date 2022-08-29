@@ -8,53 +8,50 @@ import java.util.StringTokenizer;
 
 /**
  * 순열 문제
+ * N과 M
+ * 순차접근 foreach 가 속도 더 빠름 ,,!
  */
 public class Main6603 {
-
-    static boolean[] isVisited;
-    static int[] list;
-    static int N;
-
-    public static void main(String[] args) throws IOException {
+    static int k;
+    static int [] s;
+    static boolean [] chk;
+    public static void main(String[] args) throws  Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st ;
-        // 7 1 2 3 4 5 6 7
-        while(true) {
-            String[] splitStr = br.readLine().split(" ");
-            N = Integer.parseInt(splitStr[0]);
-            if(N == 0) {
-                break;
+
+        while(true){
+            String testCase=br.readLine();
+            if(testCase.equals("0")) break;
+
+            String [] input = testCase.split(" ");
+            k=Integer.parseInt(input[0]);
+            s=new int[k];
+            chk=new boolean[k];
+
+            // 초기값 세팅
+            for(int i=0;i<k;i++){
+                s[i]=Integer.parseInt(input[i+1]);
             }
 
-            // 노드의 갯수
-            int size = Integer.parseInt(splitStr[0]);
-
-            list = new int[size];
-            isVisited = new boolean[size];
-
-            for(int i=0; i<size; i++) {
-                list[i] = Integer.parseInt(splitStr[i+1]);
-            }
-            Dfs(0, 0);
+            dfs(0,0);
             System.out.println();
         }
     }
 
-    static void Dfs(int data, int depth) {
-
-        if(depth == 6) {
-            for(int i=0; i<N; i++) {
-                if(isVisited[i]){
-                    System.out.print(list[i]+" ");
+    public static void dfs(int depth,int start){
+        if(depth==6){
+            for(int i=0;i<k;i++){
+                if(chk[i]){
+                    System.out.print(s[i]+" ");
                 }
             }
             System.out.println();
         }
 
-        for(int i=data; i<N; i++) {
-            isVisited[i] = true;
-            Dfs(data+1, depth+1);
-            isVisited[i] = false;
+        for(int i=start;i<k;i++){
+            chk[i]=true;
+            dfs(depth+1,start+1);
+            chk[i]=false;
         }
+
     }
 }

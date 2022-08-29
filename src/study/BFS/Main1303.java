@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.StringTokenizer;
 
 
 public class Main1303 {
@@ -18,11 +19,13 @@ public class Main1303 {
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
 
-    static int count = 1;
+    static int count;
 
     static int bfs(int x, int y, char color) {
         Queue<Node> q = new LinkedList<>();
         q.offer(new Node(x, y));
+        count = 1;
+        isVisited[x][y] = true;
 
         while(!q.isEmpty()) {
             Node node = q.poll();
@@ -46,18 +49,17 @@ public class Main1303 {
                 }
             }
         }
-
         return count;
     }
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st ;
+        st = new StringTokenizer(br.readLine());
 
-        String[] size = br.readLine().split(" ");
-
-        n = Integer.parseInt(size[0]);
-        m = Integer.parseInt(size[1]);
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
         list = new char[n][m];
         isVisited = new boolean[n][m];
@@ -76,17 +78,20 @@ public class Main1303 {
         // 탐색 실행
         for(int i=0; i<n; i++) {
             for(int j=0; j<m; j++) {
+                // count = 1;
 
-                // 아군인경우 탐색
-                if(!isVisited[i][j] && list[i][j] == 'W') {
-                    int num = bfs(i, j, 'W');
-                    rw += num;
-                }
+                if(!isVisited[i][j]) {
+                    // 아군인경우 탐색
+                    if(list[i][j] == 'W') {
+                        int num = bfs(i, j, 'W');
+                        rw += (num * num);
+                    }
 
-                // 적군인 경우 탐색
-                if(!isVisited[i][j] && list[i][j] == 'B') {
-                    int num = bfs(i, j, 'B');
-                    rb += num;
+                    // 적군인 경우 탐색
+                    if(list[i][j] == 'B') {
+                        int num = bfs(i, j, 'B');
+                        rb += (num * num);
+                    }
                 }
             }
         }

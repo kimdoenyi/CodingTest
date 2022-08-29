@@ -19,8 +19,9 @@ public class Main2667 {
         list = new int[N][N];
 
         for(int i=0; i<N; i++) {
-            String str = br.readLine();
+            String str = br.readLine();  // "0110100"
             for(int j=0; j<N; j++) {
+                // char -> int '0' : 48 ,, 0 : 0
                 list[i][j] = str.charAt(j)-'0';
             }
         }
@@ -52,11 +53,12 @@ public class Main2667 {
     }
 
     static boolean dfs(int x, int y) {
-
+        // 기저조건
         if(x <= -1 || x >= N || y <= -1 || y >= N) {
             return false;
         }
 
+        // 실행부분
         if(list[x][y] == 1) {
             list[x][y] = 0;
             homeCount += 1;
