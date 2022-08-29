@@ -38,9 +38,11 @@ public class 미로탈출 {
     public static int dy[] = {0, 0, -1, 1};
 
     public static int bfs(int x, int y) {
+        // Queue 선언
         Queue<Node> q = new LinkedList<>();
         q.offer(new Node(x,y));
-
+        
+        // 루프 추가
         while(!q.isEmpty()) {
             Node node = q.poll();
             x = node.getX();
@@ -68,7 +70,7 @@ public class 미로탈출 {
     }
 
     public static void main(String[] args) throws IOException {
-
+        // 입력
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String size = br.readLine();
