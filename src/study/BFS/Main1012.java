@@ -20,6 +20,7 @@ public class Main1012 {
         }
 
         if(list[x][y] == 1) {
+            // 생성된 배열은 값을 바꾸지말자
             list[x][y] = 0;
 
             dfs(x-1, y);
