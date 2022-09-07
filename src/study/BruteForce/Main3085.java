@@ -44,6 +44,11 @@ public class Main3085 {
         return max;
     }
 
+    /**
+     * 배열 복사 - 깊은 복사해야 원본 데이터셋 값이 변경되어도 카피 데이터셋 값 변경 안됨
+     * @param target
+     * @param copy
+     */
     static void copyArray(int[][] target, int[][] copy) {
         for(int i=0; i<target.length; i++) {
             for(int j=0; j<target[i].length; j++) {
