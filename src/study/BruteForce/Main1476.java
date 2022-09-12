@@ -2,6 +2,9 @@ package study.BruteForce;
 
 import java.util.Scanner;
 
+/**
+ * ㅋㅏ잉 달력
+ */
 public class Main1476 {
 
     public static void main(String[] args) {
