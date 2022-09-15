@@ -3,7 +3,7 @@ package study.BruteForce;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+
 
 public class Main6064 {
     public static void main(String[] args) throws IOException {
