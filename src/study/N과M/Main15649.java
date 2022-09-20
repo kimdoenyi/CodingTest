@@ -2,6 +2,9 @@ package study.N과M;
 
 import java.util.Scanner;
 
+/**
+ * 기본순열
+ */
 public class Main15649 {
 
     public static int[] arr;
