@@ -39,19 +39,22 @@ public class Main4963 {
             for(int i=0; i<M; i++) {
                 st = new StringTokenizer(br.readLine());
                 for(int j=0; j<N; j++) {
-                    arr[M][N] = Integer.parseInt(st.nextToken());
+                    arr[i][j] = Integer.parseInt(st.nextToken());
                 }
             }
 
             // 탐색시작
             for(int i=0; i<M; i++) {
                 for(int j=0; j<N; j++) {
-                    dfs(i, j);
+                    if(!isVisited[i][j] && arr[i][j] == 1) {
+                        count++;
+                        dfs(i, j);
+                    }
                 }
             }
 
             System.out.println(count);
-            count = 1;
+            count = 0;
 
         }
     }
@@ -70,8 +73,6 @@ public class Main4963 {
             dfs(x, y-1);
             dfs(x+1, y);
             dfs(x, y+1);
-
-            count++;
         }
     }
 }
