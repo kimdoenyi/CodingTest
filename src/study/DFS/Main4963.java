@@ -15,7 +15,10 @@ public class Main4963 {
     public static int arr[][];  // 지도
     public static boolean isVisited[][];  // 방문여부
     public static int N, M;
-    public static int count = 1;
+    public static int count = 0;
+
+    static int[] dx = {0, 0, 1, 1, 1, -1, -1, -1};
+    static int[] dy = {1, -1, 0, -1, 1, -1, 0, 1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -46,9 +49,8 @@ public class Main4963 {
             // 탐색시작
             for(int i=0; i<M; i++) {
                 for(int j=0; j<N; j++) {
-                    if(!isVisited[i][j] && arr[i][j] == 1) {
+                    if(dfs(i,j)) {
                         count++;
-                        dfs(i, j);
                     }
                 }
             }
@@ -59,20 +61,18 @@ public class Main4963 {
         }
     }
 
-    public static void dfs(int x, int y) {
+    static boolean dfs(int x, int y) {
+        if(x == -1 || y == -1 || x == N || y == M) return false;
 
-        // 기저조건
-        if(x <= -1 || x >= N || y <= -1 || y >= N) {
-            return;
+        if(arr[x][y] == 0) return false;
+
+        arr[x][y] = 0;
+
+        for (int i = 0; i < dx.length; i++) {
+            int xx = dx[i];
+            int yy = dy[i];
+            dfs(x + xx, y + yy);
         }
-
-        if(!isVisited[x][y] && arr[x][y] == 1) {
-            isVisited[x][y] = true;
-
-            dfs(x-1, y);
-            dfs(x, y-1);
-            dfs(x+1, y);
-            dfs(x, y+1);
-        }
+        return true;
     }
 }
